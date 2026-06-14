@@ -1,0 +1,636 @@
+.bento-section {
+  padding: 4rem 0;
+  background-color: #fbfdfb;
+  position: relative;
+  z-index: 10;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 250px 250px 250px 180px;
+  gap: 1.5rem;
+}
+
+/* Base Card Styles */
+.bento-card {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  border-color: rgba(163, 204, 95, 0.2);
+}
+
+.bento-content {
+  padding: 2.2rem;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Specific Card Placements */
+.product-visual-card {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  background: #f6faf5;
+}
+
+.problem-card {
+  grid-column: 3 / 5;
+  grid-row: 1 / 2;
+}
+
+.markets-card {
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+}
+
+.impact-card-water {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.impact-card-temp {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  background: #9cd649;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.circular-card {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Card 1: Flagship Product */
+.product-visual-card h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #112618;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.product-visual-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555555;
+  max-width: 50%;
+}
+
+.bento-badge {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: rgba(163, 204, 95, 0.12);
+  color: #4b882f;
+  font-weight: 700;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-bottom: 0.85rem;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bento-image-main {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 62%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+  transition: transform 0.5s ease;
+}
+
+.product-visual-card:hover .bento-image-main {
+  transform: scale(1.04) rotate(-3deg);
+}
+
+.product-specs-list {
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  z-index: 2;
+  position: relative;
+  max-width: 50%;
+}
+
+.product-specs-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  color: #444444;
+  font-weight: 600;
+}
+
+.spec-check-icon {
+  color: #4b882f;
+  flex-shrink: 0;
+}
+
+/* Card 2: Plastic Crisis */
+.problem-card h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #112618;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.problem-card p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #555555;
+}
+
+.problem-stats-mini {
+  display: flex;
+  gap: 4rem;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.mini-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #9cd649;
+  line-height: 1;
+}
+
+.mini-label {
+  font-size: 0.72rem;
+  color: #777777;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+/* Card 3: Markets (Built For Everyone) */
+.markets-card .bento-content {
+  padding: 2rem 1.15rem;
+}
+
+.markets-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #112618;
+  margin: 0;
+  letter-spacing: -0.01em;
+  padding-left: 0.5rem;
+}
+
+.market-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.market-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.market-item:hover {
+  background: rgba(163, 204, 95, 0.05);
+  transform: translateX(4px);
+}
+
+.market-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(163, 204, 95, 0.06);
+  border: 1px solid rgba(163, 204, 95, 0.12);
+  color: #4b882f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.market-item:hover .market-icon {
+  background: rgba(163, 204, 95, 0.15);
+  border-color: rgba(163, 204, 95, 0.25);
+  transform: scale(1.05);
+}
+
+.market-item h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #112618;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.market-item span {
+  font-size: 0.78rem;
+  color: #666666;
+  line-height: 1.3;
+  display: block;
+}
+
+/* Impact Cards (Water & Temp) */
+.impact-icon {
+  margin-bottom: auto;
+  transition: all 0.4s ease;
+}
+
+.impact-card-water .impact-icon {
+  color: #2a6f97;
+  fill: rgba(42, 111, 151, 0.15);
+}
+
+.impact-card-temp .impact-icon {
+  color: #13271c;
+  fill: rgba(255, 215, 0, 0.35);
+}
+
+.impact-card-co2 .impact-icon {
+  color: #00b4d8;
+}
+
+.impact-card-weight .impact-icon {
+  color: #6c757d;
+  fill: rgba(108, 117, 125, 0.15);
+}
+
+.impact-data {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.impact-val {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #112618;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.03em;
+}
+
+.impact-label {
+  font-size: 0.72rem;
+  color: #666666;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+/* Special styling for Temp Card */
+
+.impact-card-temp .impact-val {
+  color: #13271c;
+}
+
+.impact-card-temp .impact-label {
+  color: rgba(19, 39, 28, 0.7);
+}
+
+.impact-card-temp:hover {
+  background: #a5e050;
+  border-color: rgba(163, 204, 95, 0.3);
+}
+
+/* Premium Unified Split Cards (Circular & Landfill) */
+.premium-split-card {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.015);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-split-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  border-color: rgba(163, 204, 95, 0.2);
+}
+
+.circular-card {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+}
+
+.landfill-card {
+  grid-column: 3 / 5;
+  grid-row: 4 / 5;
+}
+
+.premium-split-card .bento-content {
+  width: 65%;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.premium-split-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #112618;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.premium-split-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0;
+}
+
+.split-card-visual-container {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Card 7 & 8: New Impact Cards (CO2 & Weight) */
+.impact-card-co2 {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.impact-card-weight {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Glow behind the icons */
+.split-card-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(163, 204, 95, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Floating Icon Box */
+.floating-icon-box {
+  width: 80px;
+  height: 80px;
+  background: rgba(19, 39, 28, 0.02);
+  border: 1px solid rgba(19, 39, 28, 0.06);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.premium-split-card:hover .floating-icon-box {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(163, 204, 95, 0.06);
+  border-color: rgba(163, 204, 95, 0.2);
+  box-shadow: 0 12px 30px rgba(163, 204, 95, 0.1);
+}
+
+.split-card-icon {
+  color: #4b882f;
+  position: relative;
+  z-index: 2;
+}
+
+/* Specific icon animations */
+.circular-leaf-icon {
+  animation: spinSlow 25s linear infinite;
+}
+
+.premium-split-card:hover .circular-leaf-icon {
+  animation: spinSlow 8s linear infinite;
+}
+
+.landfill-trash-icon {
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Responsive Grid */
+@media (max-width: 960px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 1.25rem;
+  }
+  
+  .product-visual-card, 
+  .problem-card, 
+  .markets-card, 
+  .impact-card-water, 
+  .impact-card-temp, 
+  .impact-card-co2,
+  .impact-card-weight,
+  .landfill-card,
+  .circular-card {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  
+  .bento-image-main {
+    position: relative;
+    width: 65%;
+    bottom: 0;
+    right: 0;
+    margin: 1.5rem auto 0;
+    display: block;
+  }
+  
+  .product-visual-card {
+    padding-bottom: 2.2rem;
+  }
+  
+  .product-visual-card p,
+  .product-specs-list {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-visual-card, 
+  .problem-card, 
+  .markets-card, 
+  .impact-card-water, 
+  .impact-card-temp, 
+  .impact-card-co2,
+  .impact-card-weight,
+  .landfill-card,
+  .circular-card {
+    grid-column: span 1 !important;
+  }
+  
+  .circular-card,
+  .landfill-card {
+    flex-direction: column;
+  }
+  
+  .premium-split-card .bento-content,
+  .split-card-visual-container {
+    width: 100% !important;
+  }
+  
+  .split-card-visual-container {
+    padding: 2rem 0;
+  }
+}
+
+/* Impact Cards Custom Padding and Descriptions */
+.impact-card-water,
+.impact-card-temp,
+.impact-card-co2,
+.impact-card-weight {
+  padding: 1.6rem !important;
+}
+
+.impact-desc {
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: #666666;
+  margin-top: 0.6rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Active background style for Temp Card desc text */
+.impact-card-temp .impact-desc {
+  color: rgba(19, 39, 28, 0.75);
+}
+
+/* Premium Micro-Animations for Impact Card Icons */
+@keyframes drip {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(6px) scale(0.92);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
+  }
+}
+
+.animated-droplet {
+  animation: drip 2.5s ease-in-out infinite;
+}
+
+@keyframes spinSun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animated-sun {
+  animation: spinSun 12s linear infinite;
+}
+
+@keyframes swayWind {
+  0%, 100% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(4px) scaleY(0.98); }
+}
+
+.animated-wind {
+  animation: swayWind 3s ease-in-out infinite;
+}
+
+@keyframes tiltScale {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+}
+
+.animated-scale {
+  animation: tiltScale 2.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Animation layers inside stat cards */
+.card-animation-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bento-card .impact-icon,
+.bento-card .impact-data {
+  position: relative;
+  z-index: 2;
+}

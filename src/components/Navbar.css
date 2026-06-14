@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════════
+   NAVBAR — Floating Island / Pill Style
+   ═══════════════════════════════════════════════════ */
+
+/* ── FIXED WRAPPER: handles positioning & centering ── */
+.navbar-wrapper {
+  position: fixed;
+  top: 1.25rem;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* let clicks pass through empty space */
+}
+
+/* ── PILL: visual styling only, no position ── */
+.navbar-island {
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  gap: 0;
+
+  background: rgba(19, 39, 28, 0.92);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  padding: 0.55rem 0.55rem 0.55rem 1.15rem;
+  width: auto;
+  max-width: min(980px, calc(100vw - 4rem));
+
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.navbar-wrapper.scrolled .navbar-island {
+  background: rgba(19, 39, 28, 0.98);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 16px 48px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ── LOGO ── */
+.island-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 0.4rem;
+  transition: opacity 0.2s;
+}
+.island-logo:hover {
+  opacity: 0.85;
+}
+
+.island-logo-svg {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+/* ── DIVIDER ── */
+.island-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.18);
+  margin: 0 0.9rem;
+  flex-shrink: 0;
+}
+
+/* ── NAV LINKS ── */
+.island-links {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.island-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.island-link:hover {
+  color: #ffffff;
+}
+.island-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.island-link-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 0;
+}
+
+.island-link-label {
+  position: relative;
+  z-index: 1;
+}
+
+.island-link-dot {
+  position: relative;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #A3CC5F;
+  flex-shrink: 0;
+}
+
+/* ── CTA BUTTON ── */
+.island-cta {
+  flex-shrink: 0;
+  margin-left: 0.3rem;
+}
+
+.island-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #A3CC5F;
+  color: #0d1f10;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 8px rgba(163, 204, 95, 0.3);
+}
+.island-btn:hover {
+  background: #b8dc6a;
+  box-shadow: 0 4px 16px rgba(163, 204, 95, 0.4);
+}
+
+.island-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(13, 31, 16, 0.2);
+  transition: background 0.2s;
+}
+.island-btn:hover .island-btn-icon {
+  background: rgba(13, 31, 16, 0.3);
+}
+
+/* ── MOBILE TOGGLE BUTTON ── */
+.island-mobile-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.island-mobile-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE DRAWER — slides down below the island
+   ═══════════════════════════════════════════════════ */
+.mobile-drawer {
+  position: fixed;
+  top: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(380px, 92vw);
+  z-index: 190;
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 24px 64px rgba(0, 0, 0, 0.07);
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mobile-drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-drawer-link:hover,
+.mobile-drawer-link.active {
+  background: rgba(19, 39, 28, 0.06);
+  color: #13271C;
+  font-weight: 600;
+}
+
+.mobile-active-pill {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1e6b39;
+}
+
+.mobile-drawer-footer {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.mobile-drawer-footer .island-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .navbar-wrapper {
+    top: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .navbar-island {
+    padding: 0.5rem 0.5rem 0.5rem 0.9rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .island-mobile-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-wrapper {
+    top: 0.5rem;
+    padding: 0 0.75rem;
+  }
+}

@@ -1,0 +1,56 @@
+.customers-section {
+  background-color: var(--color-bg-white);
+  color: var(--color-text-dark);
+}
+
+.customers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.customer-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.customer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent-green);
+}
+
+.customer-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(150, 206, 77, 0.1);
+  color: var(--color-accent-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.customer-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.customer-info h3 {
+  font-size: 1.125rem;
+  margin: 0;
+  color: var(--color-forest-green);
+}

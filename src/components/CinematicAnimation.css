@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════
+   CINEMATIC ANIMATION — Scroll-Driven Particle Scenes
+   ═══════════════════════════════════════════════════ */
+
+/* ── Section (tall scroll container) ── */
+.cin-section {
+  position: relative;
+  height: 400vh;
+  /* Solid fallback so page bg never shows through */
+  background: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Sticky viewport ── */
+.cin-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* Solid fallback behind canvas */
+  background: #ffffff;
+}
+.cin-sticky--dark {
+  background: #0b1a10;
+}
+
+/* ── Canvas ──
+   Explicitly sized to fill parent.
+   background: inherit acts as an extra safety net. */
+.cin-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #ffffff;
+}
+
+/* ── Vignette overlay ── */
+.cin-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 45%,
+    rgba(255,255,255,0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  transition: background 0.8s ease;
+}
+.cin-vignette.dark {
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 40%,
+    rgba(11,26,16,0.6) 100%
+  );
+}
+
+/* ════════════════════════════════════════════════════
+   TEXT OVERLAYS
+   ════════════════════════════════════════════════════ */
+.cin-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2.5rem;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* Alignment variants */
+.cin-text--center {
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+.cin-text--bottom-center {
+  bottom: 9%;
+  text-align: center;
+}
+.cin-text--bottom-left {
+  bottom: 11%;
+  left: 6%;
+  right: auto;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 520px;
+}
+.cin-text--final {
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Glassmorphism backdrop for text legibility */
+.cin-text--center::before,
+.cin-text--bottom-center::before,
+.cin-text--bottom-left::before {
+  content: '';
+  position: absolute;
+  inset: -28px -36px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: -1;
+}
+.cin-text--dark::before {
+  background: rgba(11,26,16,0.72);
+}
+.cin-text--final::before {
+  inset: -40px -48px;
+  background: rgba(11,26,16,0.6);
+}
+
+/* ── Headline ── */
+.cin-headline {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  color: #0b1a10;
+  letter-spacing: -0.03em;
+  line-height: 1.14;
+  max-width: 700px;
+}
+.cin-text--dark .cin-headline {
+  color: #ffffff;
+}
+
+/* ── Sub text ── */
+.cin-sub {
+  margin: 0;
+  font-size: clamp(0.78rem, 1.3vw, 0.96rem);
+  font-weight: 500;
+  color: rgba(11,26,16,0.5);
+  letter-spacing: 0.05em;
+  max-width: 580px;
+  line-height: 1.65;
+}
+.cin-text--dark .cin-sub {
+  color: rgba(255,255,255,0.54);
+}
+
+/* ── Final logo ── */
+.cin-logo-wrap {
+  display: flex;
+  justify-content: center;
+}
+.cin-logo {
+  height: 68px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* ════════════════════════════════════════════════════
+   PROGRESS DOTS
+   ════════════════════════════════════════════════════ */
+.cin-dots {
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 20;
+}
+.cin-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(11,26,16,0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.cin-dot.active {
+  background: #A3CC5F;
+  transform: scale(1.8);
+}
+.cin-dots--dark .cin-dot {
+  background: rgba(255,255,255,0.2);
+}
+.cin-dots--dark .cin-dot.active {
+  background: #A3CC5F;
+}
+
+/* ════════════════════════════════════════════════════
+   SCROLL CUE
+   ════════════════════════════════════════════════════ */
+.cin-scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.cin-scroll-cue.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: cin-bounce 2.2s ease-in-out infinite;
+}
+.cin-scroll-cue span {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(11,26,16,0.38);
+}
+.cin-scroll-cue.dark span {
+  color: rgba(255,255,255,0.32);
+}
+.cin-chevron {
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid rgba(11,26,16,0.28);
+  border-bottom: 2px solid rgba(11,26,16,0.28);
+  transform: rotate(45deg);
+}
+.cin-scroll-cue.dark .cin-chevron {
+  border-color: rgba(255,255,255,0.25);
+}
+@keyframes cin-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cin-section { height: 320vh; }
+  .cin-headline { font-size: 1.6rem; }
+  .cin-text--bottom-left { left: 1.25rem; bottom: 8%; max-width: 90%; }
+  .cin-dots { display: none; }
+  .cin-logo { height: 52px; }
+}
+@media (max-width: 480px) {
+  .cin-section { height: 260vh; }
+  .cin-headline { font-size: 1.35rem; }
+  .cin-sub { font-size: 0.78rem; }
+}

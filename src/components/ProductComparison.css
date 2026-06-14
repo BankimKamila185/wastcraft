@@ -1,0 +1,286 @@
+.comparison-section {
+  padding: 6rem 0;
+  background-color: var(--color-bg-main);
+  position: relative;
+  z-index: 10;
+}
+
+.comparison-tag {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: rgba(150, 206, 77, 0.12);
+  color: #4b882f;
+  font-weight: 700;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.comparison-header h2 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--color-forest-green);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.comparison-subtitle {
+  max-width: 650px;
+  margin: 0 auto 4rem;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Comparison Cards Grid */
+.comparison-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  align-items: stretch;
+  margin-bottom: 4rem;
+  padding: 1rem 0;
+}
+
+/* Base Card Style */
+.comparison-card {
+  border-radius: 28px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Competitor Card Styling (Muted) */
+.competitor-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.competitor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.competitor-card h3 {
+  font-size: 1.4rem;
+  color: var(--color-forest-green);
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.competitor-card .card-subtitle-text {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+/* Highlighted Winner Card (WasteCraft) */
+.featured-winner-card {
+  background: linear-gradient(135deg, #13271C 0%, #0a1710 100%);
+  border: 1px solid rgba(150, 206, 77, 0.25);
+  color: #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(19, 39, 28, 0.25);
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.featured-winner-card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 30px 60px -10px rgba(19, 39, 28, 0.35);
+  border-color: rgba(150, 206, 77, 0.4);
+}
+
+.featured-winner-card h3 {
+  font-size: 1.6rem;
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.featured-winner-card .card-subtitle-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Card Icons */
+.card-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.winner-icon {
+  background: rgba(150, 206, 77, 0.15);
+  color: var(--color-accent-green);
+  box-shadow: 0 0 15px rgba(150, 206, 77, 0.2);
+}
+
+/* Winner Ribbon */
+.winner-ribbon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--color-accent-green);
+  color: var(--color-forest-green);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(150, 206, 77, 0.2);
+}
+
+/* Card Specs List */
+.card-specs-list {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.card-spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+}
+
+.competitor-card .card-spec-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.featured-winner-card .card-spec-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spec-label-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.competitor-card .spec-label-title {
+  color: var(--color-text-muted);
+}
+
+.featured-winner-card .spec-label-title {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Badges for Specs values */
+.spec-val-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Red Badges */
+.competitor-card .badge-red {
+  background: rgba(239, 68, 68, 0.08);
+  color: #DC2626;
+}
+
+/* Grey Badges */
+.competitor-card .badge-grey {
+  background: rgba(148, 163, 184, 0.1);
+  color: #475569;
+}
+
+/* Green Badges on Dark Winner Card */
+.featured-winner-card .badge-green {
+  background: rgba(150, 206, 77, 0.15);
+  color: var(--color-accent-green);
+  border: 1px solid rgba(150, 206, 77, 0.15);
+}
+
+/* Footnotes Section */
+.comparison-foot-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.foot-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.foot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(150, 206, 77, 0.2);
+}
+
+.foot-icon.green {
+  color: var(--color-accent-green);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.foot-card h5 {
+  font-size: 1.1rem;
+  color: var(--color-forest-green);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.foot-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .comparison-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .featured-winner-card {
+    transform: none;
+    order: -1; /* Place the winner first on mobile for priority */
+  }
+  
+  .featured-winner-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 640px) {
+  .comparison-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .comparison-card {
+    padding: 1.75rem;
+  }
+  
+  .comparison-foot-cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}

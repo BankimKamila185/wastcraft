@@ -1,0 +1,66 @@
+.partnerships-section {
+  background-color: var(--color-bg-main);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.partners-label {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Fading edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #CBD5E1; /* Light gray for placeholder logos */
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.partner-logo:hover {
+  color: var(--color-forest-green);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-logo {
+    font-size: 1.25rem;
+    padding: 0 2rem;
+  }
+}

@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand Colors */
+  --color-forest-green: #13271C;
+  --color-forest-green-light: #1E3E2A;
+  --color-accent-green: #96CE4D;
+  
+  /* Light Theme Colors */
+  --color-bg-main: #FAFAFA;
+  --color-bg-white: #FFFFFF;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #475569;
+  --color-border: #E2E8F0;
+  
+  /* Gradients */
+  --gradient-mesh: radial-gradient(at 40% 20%, rgba(150, 206, 77, 0.1) 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, rgba(150, 206, 77, 0.05) 0px, transparent 50%),
+                   radial-gradient(at 0% 50%, rgba(150, 206, 77, 0.1) 0px, transparent 50%);
+                   
+  --text-gradient: linear-gradient(135deg, var(--color-forest-green), var(--color-accent-green));
+  
+  /* Shadows (Stripe-esque) */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0,0,0,0.02);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  
+  /* Utilities */
+  --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-forest-green);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-padding {
+  padding: 4.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 0;
+  }
+}
+
+.glass-card {
+  background: var(--color-bg-white);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.text-gradient {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: var(--color-forest-green);
+  color: var(--color-bg-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(19, 39, 28, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--color-forest-green-light);
+  box-shadow: 0 8px 15px rgba(19, 39, 28, 0.15);
+}
+
+.btn-secondary {
+  background: var(--color-bg-white);
+  color: var(--color-forest-green);
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-main);
+  border-color: #CBD5E1;
+  box-shadow: var(--shadow-hover);
+}
+
+/* Dark Section Utilities */
+.dark-section {
+  background-color: var(--color-forest-green);
+  color: var(--color-bg-white);
+}
+
+.dark-section h1, .dark-section h2, .dark-section h3 {
+  color: var(--color-bg-white);
+}
+
+.dark-section p {
+  color: rgba(255, 255, 255, 0.7);
+}

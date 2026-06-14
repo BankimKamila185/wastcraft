@@ -1,0 +1,395 @@
+.future-section {
+  background-color: var(--color-bg-white);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background gradient sweep */
+.fv-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(150, 206, 77, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(19, 39, 28, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.future-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Badge ── */
+.future-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #166534;
+  background: rgba(150, 206, 77, 0.13);
+  border: 1px solid rgba(150, 206, 77, 0.3);
+  border-radius: 9999px;
+  padding: 0.4rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Left content ── */
+.future-content h2 {
+  font-size: 2.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
+}
+
+.future-content .section-desc {
+  margin-bottom: 2rem;
+}
+
+/* Product list */
+.future-list {
+  margin-bottom: 2.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.future-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-main);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+}
+
+.future-list-item:hover {
+  background: var(--color-bg-white);
+  border-color: rgba(150, 206, 77, 0.25);
+  box-shadow: var(--shadow-card);
+}
+
+.future-list-icon {
+  color: var(--color-accent-green);
+  background: rgba(150, 206, 77, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.future-list-item:hover .future-list-icon {
+  background: var(--color-accent-green);
+  color: white;
+  transform: scale(1.05);
+}
+
+.future-list-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.list-chevron {
+  color: var(--color-accent-green);
+  opacity: 0.6;
+  margin-left: auto;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.future-list-item:hover .list-chevron {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* Stats row */
+.fv-stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: var(--color-bg-white);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.03);
+}
+
+.fv-stat {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.fv-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -0.75rem;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: var(--color-border);
+}
+
+.fv-stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-forest-green);
+  line-height: 1;
+}
+
+.fv-stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+}
+
+/* ── Right Column: 3D Perspective Card Deck ── */
+.future-visual-deck {
+  position: relative;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ambient glow orb behind the stack */
+.deck-glow-orb {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(150, 206, 77, 0.15), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseOrb 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseOrb {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(15px, -15px); }
+}
+
+/* Blueprint grid background */
+.deck-radial-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(19, 39, 28, 0.05) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(150, 206, 77, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 12px 12px;
+  background-position: center;
+  pointer-events: none;
+  opacity: 0.8;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.perspective-container {
+  perspective: 1200px;
+  width: 340px;
+  height: 320px;
+  position: relative;
+  z-index: 2;
+}
+
+.perspective-stack {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: rotateX(24deg) rotateY(-18deg) rotateZ(6deg);
+}
+
+/* Individual Stack Card */
+.perspective-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  background: rgba(19, 39, 28, 0.96); /* Dark forest glassmorphism */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+/* Active card has custom colored borders */
+.perspective-card.active {
+  border-color: var(--accent-color);
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.03) 0%, transparent 60%), rgba(19, 39, 28, 0.98);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-header-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title-pre {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+}
+
+.card-title-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Card Body */
+.card-body {
+  margin: 1.25rem 0;
+}
+
+.card-metric-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.card-metric-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* Card Footer Indicators */
+.card-footer-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.85rem;
+}
+
+.card-num {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: monospace;
+}
+
+.card-dots-graphic {
+  height: 2px;
+  flex: 1;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 8px 100%;
+  margin: 0 1rem;
+}
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+/* Interaction Hint below deck */
+.deck-interaction-hint {
+  margin-top: 2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.7;
+}
+
+.deck-interaction-hint::before,
+.deck-interaction-hint::after {
+  content: '';
+  width: 12px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .future-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .future-visual-deck {
+    order: -1;
+    height: 420px;
+  }
+
+  .perspective-container {
+    width: 320px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .future-content h2 {
+    font-size: 2rem;
+  }
+
+  .fv-stats-row {
+    gap: 1.25rem;
+  }
+}

@@ -1,0 +1,226 @@
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.modal-container-wrapper {
+  position: relative;
+  z-index: 1010;
+  width: 90%;
+  max-width: 600px;
+}
+
+.glass-modal-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+  padding: 3rem;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.05), 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25), 
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--color-text-dark);
+  transform: rotate(90deg);
+}
+
+/* Header Info */
+.modal-form-header {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+  align-items: flex-start;
+}
+
+.modal-header-icon-box {
+  width: 44px;
+  height: 44px;
+  background: rgba(150, 206, 77, 0.12);
+  color: #4b882f;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-form-header h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-forest-green);
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.modal-form-header p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Form Layout */
+.modal-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.form-group-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-modal.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group-modal label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.45rem;
+}
+
+.form-group-modal input,
+.form-group-modal select,
+.form-group-modal textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-dark);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.form-group-modal input:focus,
+.form-group-modal select:focus,
+.form-group-modal textarea:focus {
+  border-color: var(--color-accent-green);
+  box-shadow: 0 0 0 4px rgba(150, 206, 77, 0.12);
+  background: #ffffff;
+}
+
+.form-group-modal input::placeholder,
+.form-group-modal textarea::placeholder {
+  color: #94A3B8;
+}
+
+/* Submit Button */
+.modal-submit-btn {
+  width: 100%;
+  background: var(--color-forest-green);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 10px rgba(19, 39, 28, 0.15);
+  cursor: pointer;
+}
+
+.modal-submit-btn:hover:not(:disabled) {
+  background: var(--color-forest-green-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(19, 39, 28, 0.25);
+}
+
+.modal-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success State */
+.modal-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.modal-success-icon {
+  color: var(--color-accent-green);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(150, 206, 77, 0.25));
+}
+
+.modal-success-state h3 {
+  font-size: 1.6rem;
+  color: var(--color-forest-green);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.modal-success-state p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+  max-width: 420px;
+}
+
+/* Responsive Overrides */
+@media (max-width: 640px) {
+  .glass-modal-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .modal-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
